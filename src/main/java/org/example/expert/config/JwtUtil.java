@@ -62,4 +62,12 @@ public class JwtUtil {
                 .parseClaimsJws(token)
                 .getBody();
     }
+
+    public Long getUserIdFromToken(String token) {
+
+        // JWT 토큰에서 클레임 추출
+        Claims claims = extractClaims(token);
+        // 클레임에서 사용자 ID 문자열을 Long타입으로 변환
+        return Long.parseLong(claims.getSubject());
+    }
 }
